@@ -1,0 +1,53 @@
+{
+  "name": "simple-crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/squidawg/Simple-CRUD-API.git"
+  },
+  "author": "squidawg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/squidawg/Simple-CRUD-API/issues"
+  },
+  "homepage": "https://github.com/squidawg/Simple-CRUD-API#readme",
+  "devDependencies": {
+    "@types/dotenv-webpack": "^7.0.3",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.17",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^9.0.0",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv-webpack": "^8.0.1",
+    "eslint": "^8.30.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-webpack-plugin": "^3.2.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.14",
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
+    "supertest": "^6.3.3",
+    "ts-jest": "^29.0.3",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "uuid": "^9.0.0"
+  }
+}
