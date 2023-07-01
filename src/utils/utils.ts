@@ -1,6 +1,7 @@
 import http from "http";
 import {ENDPOINT, HTTP_METHOD} from "../constants";
 import {User} from "../models/user.model";
+import {updateUsersRecords} from "../data/users";
 
 export const onRequestType = (req: http.IncomingMessage) => {
     const url = req.url;
@@ -41,9 +42,12 @@ export const getReqData = async (req: http.IncomingMessage) => {
 }
 
 export const updateUserInRecords = (userRecords: User[], user:User) => {
-    userRecords.map(obj => obj.id === user.id? user: obj);
+    const users = userRecords.map(obj => obj.id === user.id? user: obj);
+    updateUsersRecords(users);
+
 }
 
 export const deleteUserInRecords = (userRecords: User[], uId:string) => {
-    userRecords.filter(obj => obj.id !== uId)
+    const users = userRecords.filter(obj => obj.id !== uId);
+    updateUsersRecords(users);
 }

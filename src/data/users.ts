@@ -1,6 +1,6 @@
 import {User} from "../models/user.model";
 
-export const userRecords: User[] = [
+export let userRecords: User[] = [
     {
         id: 'e561cbef-687a-489c-8b3e-4a15e54ff2c1',
         username: 'Alex',
@@ -14,3 +14,7 @@ export const userRecords: User[] = [
         hobbies: ['sleeping']
     }
 ]
+
+export const updateUsersRecords = (value: User[]) =>{
+    userRecords = value
+}
