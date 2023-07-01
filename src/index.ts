@@ -1,7 +1,7 @@
-import { PORT, ENDPOINT } from './constants';
+import {PORT} from './constants';
 import * as http from "http";
-import {UserController} from "./controllers/UserController";
-
+import * as userController from "./controllers/controller";
+import {onRequestType} from "./utils/utils";
 
 const server = http.createServer(async (req: http.IncomingMessage, res:http.ServerResponse) => {
     await onListenRequest(req,res)
@@ -14,19 +14,18 @@ process.on('SIGINT',  () => {
 });
 
 
-export const onRequestType = (req: http.IncomingMessage) => {
-    const url = req.url;
-    const method = req.method
-    if(url === ENDPOINT && method === 'GET'){
-        return 'getUsers';
-    }
-}
-
 export const onListenRequest = async (req: http.IncomingMessage, res:http.ServerResponse) => {
   const request = onRequestType(req);
-  const userController = new UserController();
     switch (request) {
-        case "getUsers": await userController.getUsers(res)
-            break
+        case "getUsers": await userController.onGetUsers(res);
+            break;
+        case "getUser": await userController.onGetUser(req, res);
+            break;
+        case "postUser": await userController.onPostUser(req, res);
+            break;
+        case "putUser": await userController.onPutUser(req, res);
+            break;
+        case "deleteUser": await userController.onDeleteUser(req, res);
+            break;
     }
 }
