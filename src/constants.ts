@@ -9,5 +9,10 @@ export enum HTTP_METHOD {
 }
 
 export enum HTTP_STATUS_CODE {
-    OK = 200
+    OK = 200,
+    CREATED = 201,
+    NO_CONTENT = 204,
+    BAD_REQUEST = 400,
+    NOT_FOUND = 404,
+    ERR_SERVER_SIDE = 500
 }
