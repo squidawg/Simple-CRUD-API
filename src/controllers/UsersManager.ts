@@ -2,6 +2,7 @@ import {userRecords} from "../data/users";
 import * as uuid from 'uuid'
 import {User} from "../models/user.model";
 import {deleteUserInRecords, updateUserInRecords} from "../utils/utils";
+import {checkRequestBody} from "./controller";
 
 export const getUsers = async () => {
     return new Promise((resolve, _) => {
@@ -28,7 +29,11 @@ export const getUser = async (uId:string) => {
 }
 
 export const createUser = async (data: User) => {
-    return new Promise((resolve, _) => {
+    return new Promise((resolve, reject) => {
+        const isBodyState = checkRequestBody(data)
+        if(isBodyState){
+            reject(isBodyState)
+        }
         let user = {
             id: uuid.v4(),
             ...data,
@@ -72,6 +77,3 @@ export const deleteUser = async (uId: string) => {
         }
     });
 }
-
-
-
