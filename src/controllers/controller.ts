@@ -1,9 +1,9 @@
 import * as http from "http";
-import {HTTP_STATUS_CODE} from "../constants";
-import *  as controller from './UsersManager'
-import {errorHandler, responseHandler} from "./dataHandler";
-import {User} from "../models/user.model";
-import {getReqData} from "../utils/utils";
+import {HTTP_STATUS_CODE} from "../constants.js";
+import *  as controller from './UsersManager.js'
+import {errorHandler, responseHandler} from "./dataHandler.js";
+import {User} from "../models/user.model.js";
+import {getReqData} from "../utils/utils.js";
 
 export const onGetUsers = async (res:http.ServerResponse) => {
     try{

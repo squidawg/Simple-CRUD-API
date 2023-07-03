@@ -1,5 +1,5 @@
 import http from "http";
-import {HTTP_STATUS_CODE} from "../constants";
+import {HTTP_STATUS_CODE} from "../constants.js";
 
 export const responseHandler = (
     res: http.ServerResponse,

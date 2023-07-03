@@ -1,8 +1,8 @@
-import {userRecords} from "../data/users";
+import {userRecords} from "../data/users.js";
 import * as uuid from 'uuid'
-import {User} from "../models/user.model";
-import {deleteUserInRecords, updateUserInRecords} from "../utils/utils";
-import {checkRequestBody} from "./controller";
+import {User} from "../models/user.model.js";
+import {deleteUserInRecords, updateUserInRecords} from "../utils/utils.js";
+import {checkRequestBody} from "./controller.js";
 
 export const getUsers = async () => {
     return new Promise((resolve, _) => {

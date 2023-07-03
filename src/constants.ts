@@ -1,4 +1,6 @@
-export const PORT = process.env.PORT || 3000;
+import 'dotenv/config';
+
+export const PORT = process.env.PORT || 4000;
 export const ENDPOINT = '/api/users';
 
 export enum HTTP_METHOD {
