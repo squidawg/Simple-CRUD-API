@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "WebWorker"],
+    "target": "ES2022",
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": ".",
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true
+  },
+  "include": ["./src/"],
+  "exclude": ["node_modules", "spec"],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true,
+    "files": true,
+    "preferTsExts": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "module",
+    "compiler": "typescript"
+  }
+}
