@@ -7,7 +7,7 @@ import http, {IncomingMessage} from "http";
 import {RequestOptions} from "node:https";
 
 import {responseHandler} from "./controllers/dataHandler.js";
-import {updateUsersRecords} from "./data/users.js";
+import {updateData} from "./data/users.js";
 import {User} from "./models/user.model.js";
 
 let counter = 0;
@@ -17,7 +17,6 @@ const urlToPath = fileURLToPath(import.meta.url);
 const dirName = dirname(urlToPath);
 
 cluster.setupPrimary({exec: `${dirName}/index.js`});
-
 if (cluster.isPrimary) {
     for (let i = 0; i < numCPUs; i++) {
         cluster.fork({ workerPort: Number(PORT) + i + 1 });
@@ -35,8 +34,8 @@ if (cluster.isPrimary) {
 
         const requestForWorker = http
             .request(urlPath, options, (response:IncomingMessage) => {
-                const respStatusCose = response.statusCode as number;
-                res.writeHead(respStatusCose, {
+                const respStatusCode = response.statusCode as number;
+                res.writeHead(respStatusCode, {
                     'Content-Type': 'application/json',
                 });
                 response.pipe(res);
@@ -53,14 +52,14 @@ if (cluster.isPrimary) {
         });
 
     cluster.on('listening', (worker, address) =>{
-        console.log(`Worker ${worker.id} connected to http://localhost${address.port}`)
+        console.log(`Worker ${worker.id} connected to http://localhost:${address.port}`)
     })
     cluster.on('message', (worker, message: { users: User[] }) => {
-        updateUsersRecords(message.users);
         const workers = Object.values(cluster.workers || {});
         Object.values(workers).forEach((worker) => {
             worker!.send(message);
         });
+        updateData(message.users);
     });
 
     cluster.on('exit', (worker, code) => {
@@ -70,9 +69,6 @@ if (cluster.isPrimary) {
             cluster.fork({ PORT: Number(PORT) + worker.id });
         }
     });
-
-
-
 }
 else {
     import('./index.js')

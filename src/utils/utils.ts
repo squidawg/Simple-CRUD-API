@@ -1,7 +1,7 @@
 import http from "http";
 import {ENDPOINT, HTTP_METHOD} from "../constants.js";
 import {User} from "../models/user.model.js";
-import {updateUsersRecords} from "../data/users.js";
+import {updateData} from "../data/users.js";
 
 export const onRequestType = (req: http.IncomingMessage) => {
     const url = req.url;
@@ -43,11 +43,11 @@ export const getReqData = async (req: http.IncomingMessage) => {
 
 export const updateUserInRecords = (userRecords: User[], user:User) => {
     const users = userRecords.map(obj => obj.id === user.id? user: obj);
-    updateUsersRecords(users);
+    updateData(users);
 
 }
 
 export const deleteUserInRecords = (userRecords: User[], uId:string) => {
     const users = userRecords.filter(obj => obj.id !== uId);
-    updateUsersRecords(users);
+    updateData(users);
 }

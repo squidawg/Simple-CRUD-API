@@ -25,8 +25,8 @@ export const onGetUser = async (req: http.IncomingMessage, res:http.ServerRespon
         responseHandler(res, HTTP_STATUS_CODE.OK, user);
     }
     catch (e) {
-        const STATUS_CODE = errorHandler(e, userId!)
-        responseHandler(res, STATUS_CODE, e)
+        const STATUS_CODE = errorHandler(e, userId!);
+        responseHandler(res, STATUS_CODE, e);
     }
 }
 
@@ -37,7 +37,7 @@ export const onPostUser = async (req: http.IncomingMessage, res:http.ServerRespo
         responseHandler(res, HTTP_STATUS_CODE.CREATED, user);
     }
     catch (e) {
-        responseHandler(res, HTTP_STATUS_CODE.NOT_FOUND, e)
+        responseHandler(res, HTTP_STATUS_CODE.NOT_FOUND, e);
     }
 
 }
@@ -50,8 +50,8 @@ export const onPutUser = async (req: http.IncomingMessage, res:http.ServerRespon
         responseHandler(res, HTTP_STATUS_CODE.OK, user);
     }
     catch (e) {
-        const STATUS_CODE = errorHandler(e, userId!)
-        responseHandler(res, STATUS_CODE, e)
+        const STATUS_CODE = errorHandler(e, userId!);
+        responseHandler(res, STATUS_CODE, e);
     }
 }
 
@@ -62,8 +62,8 @@ export const onDeleteUser = async (req: http.IncomingMessage, res:http.ServerRes
         responseHandler(res, HTTP_STATUS_CODE.NO_CONTENT, user);
     }
     catch (e) {
-        const STATUS_CODE = errorHandler(e, userId!)
-        responseHandler(res, STATUS_CODE, e)
+        const STATUS_CODE = errorHandler(e, userId!);
+        responseHandler(res, STATUS_CODE, e);
     }
 }
 

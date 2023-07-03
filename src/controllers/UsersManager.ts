@@ -1,4 +1,4 @@
-import {userRecords} from "../data/users.js";
+import {getUserRecords, updateData, userRecords} from "../data/users.js";
 import * as uuid from 'uuid'
 import {User} from "../models/user.model.js";
 import {deleteUserInRecords, updateUserInRecords} from "../utils/utils.js";
@@ -6,7 +6,7 @@ import {checkRequestBody} from "./controller.js";
 
 export const getUsers = async () => {
     return new Promise((resolve, _) => {
-        resolve(userRecords);
+        resolve(getUserRecords());
     })
 }
 
@@ -30,15 +30,16 @@ export const getUser = async (uId:string) => {
 
 export const createUser = async (data: User) => {
     return new Promise((resolve, reject) => {
-        const isBodyState = checkRequestBody(data)
+        const isBodyState = checkRequestBody(data);
         if(isBodyState){
-            reject(isBodyState)
+            reject(isBodyState);
         }
         let user = {
             id: uuid.v4(),
             ...data,
         };
         userRecords.push(user);
+        updateData(userRecords.slice());
         resolve(user);
     });
 }
